@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PDANet+RWT GUI
+Comment=GUI for PdaNet Reverse Wireless Tunnel
+Exec=sudo pdanet-gui
+Icon=/usr/local/bin/pdanet-rwt-bin/pdanet-icon.png
+Terminal=true
+Type=Application
+Categories=Network;Utility;
+X-AppImage-Version=0.8

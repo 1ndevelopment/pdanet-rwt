@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Script Name: Portable Data Network + Reverse Wireless Install Script
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2025 Jacy Kincade (1ndevelopment@protonmail.com)
+
+[ "$(id -u)" -ne 0 ] && { echo "Error: Run as superuser"; exit 1 ;}
+
+ins() {
+    echo -e "\nInstalling PdaNet+ Reverse WiFi Tunnel GUI..."
+    if [ -d /usr/local/bin/pdanet-rwt-bin ]; then
+        echo "PdaNet+ RWT GUI is already installed."
+        exit 0
+    fi
+    
+    # Copy files to the appropriate directories
+    mkdir -p /usr/local/bin/pdanet-rwt-bin
+    cp ./src/* /usr/local/bin/pdanet-rwt-bin/
+    cp /usr/local/bin/pdanet-rwt-bin/pdanet-gui.desktop /usr/share/applications/pdanet-rwt.desktop
+    # Create symbolic links for easy access
+    ln -s /usr/local/bin/pdanet-rwt-bin/launch_gui.sh /usr/local/bin/pdanet-gui
+    ln -s /usr/local/bin/pdanet-rwt-bin/pdanet_rwt.sh /usr/local/bin/pdanet-headless
+
+    echo -e "PdaNet+ RWT GUI installation completed successfully.\n"
+    echo -e "Launch from application launcher. (PDANet+RWT GUI)\n"
+    echo -e "OR run the command:\nsudo pdanet-gui\n"
+    echo -e "OR run the headless version using:\nsudo pdanet-headless:\n"
+    echo "Logs are located at: /usr/local/bin/pdanet-rwt-bin/logs"
+}
+
+uni() {
+    echo "Uninstalling PdaNet+ Reverse WiFi Tunnel GUI..."
+    rm -rf /usr/local/bin/pdanet-rwt-bin
+    rm -f /usr/local/bin/pdanet-gui
+    rm -f /usr/local/bin/pdanet-headless
+    rm -f /usr/share/applications/pdanet-rwt.desktop
+    echo "PdaNet+ RWT GUI uninstallation completed successfully."
+}
+case "$1" in
+    install) ins ;;
+    uninstall) uni ;;
+    *) echo "Usage: $0 {install|uninstall}"; exit 1 ;;
+esac
