@@ -7,16 +7,15 @@
 ```
 *Portable Data Network + Reverse Wireless Tunnel*
 
+> ***Tested on x86_64 Debian & Arch Linux with a paid version of pdanet+ running on Android 14.***
 
 # Features
 
++ Tunnels traffic for various package & window managers
 + Routes packets via TCP to UDP
 + Fetches a speedier tun2socks fork ([hev-socks5-tunnel](https://github.com/heiher/hev-socks5-tunnel))
-+ Tunnels traffic for various package & window managers
 + Improved Graphical User Interface
 + Restores to default config on exit
-
-> ***Tested on x86_64 Debian & Arch Linux with a paid version of pdanet+ running on Android 14.***
 
 ## Pre-Requirements
 
